@@ -2,17 +2,17 @@
 /**
  * WordPress referral code
  *
- * @link              http://shalior.ir
+ * @link              https://github.com/davidfuzju/wp-referral-code
  * @since             1.1.1
  * @package           WP_Referral_Code
  *
  * @wordpress-plugin
  * Plugin Name:       WP Referral Code
- * Plugin URI:        http://shalior.ir/wp-referral-code
+ * Plugin URI:        https://github.com/davidfuzju/wp-referral-code
  * Description:       This plugin brings referral marketing to your WordPress website. It's dead simple, fast, customizable, and it's all free!
- * Version:           1.4.10
- * Author:            Shalior <contact@shalior.ir>
- * Author URI:        http://shalior.ir/
+ * Version:           1.5.0
+ * Author:            David FU <david.fu.zju@gmail.com>
+ * Author URI:        https://github.com/davidfuzju
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wp-referral-code

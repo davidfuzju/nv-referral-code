@@ -1,5 +1,5 @@
 === WP Referral Code ===
-Contributors: shalior
+Contributors: David FU
 Tags: referral marketing, refer, referral, affiliate, affiliate marketing
 Requires at least: 4.8
 Tested up to: 6.5
@@ -28,6 +28,9 @@ note: on activation plugin will create refer codes for all of your users.
 4. Managing referrals in User edit page
 
 == Changelog ==
+
+= 1.5.0 =
+add refer link for current web page.
 
 = 1.4.10 =
 * UI enhancements.
