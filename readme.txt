@@ -1,4 +1,4 @@
-=== WP Referral Code ===
+=== NV Referral Code ===
 Contributors: David FU
 Tags: referral marketing, refer, referral, affiliate, affiliate marketing
 Requires at least: 4.8
@@ -10,7 +10,7 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 This plugin brings referral marketing to your WordPress website. It's dead simple, fast, customizable, and it's all free!
 
 == Description ==
-WP Referral Code is a WordPress plugin that helps you generate a unique referral code for each of your users, enabling you to start your own version of referral marketing. Upon user registration, the plugin captures the refer code automatically. Additionally, WP Referral Code provides a user-friendly "copy refer link box" that allows users to easily copy and share their referral link.
+NV Referral Code is a WordPress plugin that helps you generate a unique referral code for each of your users, enabling you to start your own version of referral marketing. Upon user registration, the plugin captures the refer code automatically. Additionally, NV Referral Code provides a user-friendly "copy refer link box" that allows users to easily copy and share their referral link.
 
 This plugin is dependent only on the WordPress core and can be used with all other plugins. However, the logic after successful referral registration is up to you. To help with this, two important hooks are provided. For more information on how to use them, please refer to the plugin documentation, which can be found on the plugin website [Documentation](http://shalior.ir/wp-referral-code "Shalior").
 

@@ -37,7 +37,7 @@ class WP_Referral_Code {
 	protected $version;
 
 	/**
-	 * The Options of WP Referral Code
+	 * The Options of NV Referral Code
 	 *
 	 * @since    1.0.0
 	 * @access   public
@@ -60,7 +60,7 @@ class WP_Referral_Code {
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->wp_referral_code = 'wp-referral-code';
+		$this->wp_referral_code = 'nv-referral-code';
 
 		$this->load_dependencies();
 		$this->define_admin_hooks();

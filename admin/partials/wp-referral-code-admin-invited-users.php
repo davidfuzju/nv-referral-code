@@ -12,18 +12,18 @@ $invited_users = $ref_code->get_invited_users();
 
 ?>
 <br>
-<h2 id="wp-referral-code-user-edit"><?php esc_html_e( 'WP Referral Code', 'wp-referral-code' ); ?></h2>
+<h2 id="wp-referral-code-user-edit"><?php esc_html_e( 'NV Referral Code', 'nv-referral-code' ); ?></h2>
 
 <table class="form-table">
 	<tr>
-		<th><?php esc_html_e( 'Referral Code info', 'wp-referral-code' ); ?></th>
+		<th><?php esc_html_e( 'Referral Code info', 'nv-referral-code' ); ?></th>
 		<td>
 			<!-- Lists  -->
 			<br>
 			<ul class="invited-users_list list">
 				<?php if ( ! empty( $referrer_id ) ) : ?>
 					<a href="<?php echo esc_url( admin_url( '/user-edit.php?user_id=' . $referrer_id . '#wp-referral-code-user-edit' ) ); ?>"  target="_blank">
-						<?php esc_html_e( 'This user has been invited by ', 'wp-referral-code' ); ?>
+						<?php esc_html_e( 'This user has been invited by ', 'nv-referral-code' ); ?>
 						<strong class="text-lg">
 							<?php
 							echo esc_html(
@@ -35,7 +35,7 @@ $invited_users = $ref_code->get_invited_users();
 
 						<?php if ( empty( get_user_meta( $user_id, 'wrc_referrer_url', true ) ) ) : ?>
 						<?php else : ?>
-						<?php esc_html_e( 'through the URL ', 'wp-referral-code') ?>
+						<?php esc_html_e( 'through the URL ', 'nv-referral-code') ?>
 						<strong class="text-lg">
 							<?php
 							echo esc_html(
@@ -49,11 +49,11 @@ $invited_users = $ref_code->get_invited_users();
 					<br>
 					<hr>
 				<?php else : ?>
-					<?php esc_html_e( 'No one invited this user', 'wp-referral-code' ); ?> <br>
+					<?php esc_html_e( 'No one invited this user', 'nv-referral-code' ); ?> <br>
 					<hr>
 				<?php endif; ?>
 
-				<?php esc_html_e( 'This user\'s default invite link: ', 'wp-referral-code' ); ?>
+				<?php esc_html_e( 'This user\'s default invite link: ', 'nv-referral-code' ); ?>
 				<a href="<?php esc_url( $ref_code->get_ref_link() ); ?>" target="_blank"><?php echo esc_url( $ref_code->get_ref_link() ); ?></a>
 				<br>
 				<hr>
@@ -67,16 +67,16 @@ $invited_users = $ref_code->get_invited_users();
 							id="wrc-add-rel-button"
 							data-referrer-id="<?php echo esc_attr( $user_id ); ?>"
 							class="wrc-add-relation button button-small button-primary add">
-						<?php esc_html_e( 'Add', 'wp-referral-code' ); ?>
+						<?php esc_html_e( 'Add', 'nv-referral-code' ); ?>
 					</button>
 				</div>
 
 				<hr>
 				<?php if ( empty( $invited_users ) ) : ?>
-					<?php esc_html_e( 'this user has invited 0 users', 'wp-referral-code' ); ?>
+					<?php esc_html_e( 'this user has invited 0 users', 'nv-referral-code' ); ?>
 				<?php else : ?>
 
-				<h4><?php esc_html_e( 'This user has invited following users: ', 'wp-referral-code' ); ?></h4>
+				<h4><?php esc_html_e( 'This user has invited following users: ', 'nv-referral-code' ); ?></h4>
 				<ul class="wp-referral-code-invited-users">
 					<?php
 					foreach ( $invited_users as $user ) :
@@ -99,7 +99,7 @@ $invited_users = $ref_code->get_invited_users();
 									class="wrc-remove-relation button button-small button-primary delete-permanently"
 									data-referrer-id="<?php echo esc_attr( $user_id ); ?>"
 									data-user-id="<?php echo esc_attr( $invited_user_id ); ?>">
-								<?php esc_html_e( 'Delete', 'wp-referral-code' ); ?>
+								<?php esc_html_e( 'Delete', 'nv-referral-code' ); ?>
 							</button>
 						</li>
 						<?php

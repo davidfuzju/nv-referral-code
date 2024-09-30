@@ -20,13 +20,13 @@ function wp_referral_code_user_param_shortcodes_init() {
 		$ref_code = new WP_Refer_Code( $user_id );
 
 		switch ( $para ) {
-			case 'ref_code':// [wp-referral-code var="ref_code"]
+			case 'ref_code':// [nv-referral-code var="ref_code"]
 				return $ref_code->get_ref_code();
-			case 'ref_link':// [wp-referral-code var="ref_link"]
+			case 'ref_link':// [nv-referral-code var="ref_link"]
 				return $ref_code->get_ref_link();
-			case 'invited_count':// [wp-referral-code var="invited_count"]
+			case 'invited_count':// [nv-referral-code var="invited_count"]
 				return empty( $ref_code->get_invited_users_id() ) ? '0' : count( $ref_code->get_invited_users_id() );
-			case 'most_referring_users': // [wp-referral-code var="most_referring_users"]
+			case 'most_referring_users': // [nv-referral-code var="most_referring_users"]
 				$limit = apply_filters( 'wp_referral_code_invited_limit_most_referring', 10 );
 
 				$results = $wpdb->get_results(
@@ -43,13 +43,13 @@ function wp_referral_code_user_param_shortcodes_init() {
 
 				return ob_get_clean();
 
-			case 'invited_list': // [wp-referral-code var="invited_list"]
+			case 'invited_list': // [nv-referral-code var="invited_list"]
 				$invited_users = $ref_code->get_invited_users_id();
 				ob_start();
 				require WP_REFERRAL_CODE_PATH . 'public/partials/invited-list.php';
 
 				return ob_get_clean();
-			case 'copy_ref_link':// [wp-referral-code var="copy_ref_link"]
+			case 'copy_ref_link':// [nv-referral-code var="copy_ref_link"]
 				if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
 					// Enqueue jquery only if not enqueued before.
 					wp_enqueue_script( 'jquery' );
@@ -64,7 +64,7 @@ function wp_referral_code_user_param_shortcodes_init() {
 				require WP_REFERRAL_CODE_PATH . 'public/partials/copy-ref-link-box.php';
 
 				return ob_get_clean();
-			case 'copy_ref_link_per_page':// [wp-referral-code var="copy_ref_link_per_page"]
+			case 'copy_ref_link_per_page':// [nv-referral-code var="copy_ref_link_per_page"]
 				if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
 					// Enqueue jquery only if not enqueued before.
 					wp_enqueue_script( 'jquery' );
@@ -81,12 +81,12 @@ function wp_referral_code_user_param_shortcodes_init() {
 				return ob_get_clean();
 		}
 
-		// [wp-referral-code var="valid_invited_count"]
+		// [nv-referral-code var="valid_invited_count"]
 		return '';
 
 	}
 
-	add_shortcode( 'wp-referral-code', 'wp_referral_code_user_param' );
+	add_shortcode( 'nv-referral-code', 'wp_referral_code_user_param' );
 }
 
 add_action( 'init', 'wp_referral_code_user_param_shortcodes_init' );

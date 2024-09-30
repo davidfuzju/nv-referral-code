@@ -38,7 +38,7 @@ $new_url = wrc_build_url($url_components);
 			</button>
 
 		</span>
-		<div class="tooltip"><span class="tooltiptext"><?php esc_html_e( 'Tooltip text', 'wp-referral-code' ); ?></span>
+		<div class="tooltip"><span class="tooltiptext"><?php esc_html_e( 'Tooltip text', 'nv-referral-code' ); ?></span>
 			<label>
 				<input class="copy-ref-link-input" readonly type="text" value="<?php echo esc_url( $new_url ); ?>">
 			</label>

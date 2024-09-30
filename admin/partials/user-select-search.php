@@ -1,7 +1,7 @@
 <select id="wrc-search-user-select"
 		class="wrc-search-user"
 		style="width: 100%">
-	<option value="-1"><?php esc_html_e( 'Search for a user', 'wp-referral-code' ); ?></option>
+	<option value="-1"><?php esc_html_e( 'Search for a user', 'nv-referral-code' ); ?></option>
 </select>
 
 <script>
@@ -24,7 +24,7 @@
 				},
 			},
 			width: '300px',
-			placeholder: '<?php esc_html_e( 'Search for a user by name or email', 'wp-referral-code' ); ?>',
+			placeholder: '<?php esc_html_e( 'Search for a user by name or email', 'nv-referral-code' ); ?>',
 		})
 	});
 </script>

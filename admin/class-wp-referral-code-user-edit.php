@@ -2,7 +2,7 @@
 /**
  * Handles custom functionality on the edit user screen,
  *
- * @package    WP Referral Code
+ * @package    NV Referral Code
  * @subpackage Admin
  * @author Shalior<contact@shalior.ir>
  */
@@ -56,15 +56,15 @@ final class Shalior_Grs_User_Edit {
 			'WPReferralCode',
 			array(
 				'alert'          => array(
-					'title'       => __( 'Are you sure?', 'wp-referral-code' ),
-					'text'        => __( 'You won\'t be able to revert this!', 'wp-referral-code' ),
-					'confirmText' => __( 'Yes, delete it!', 'wp-referral-code' ),
-					'cancelText'  => __( 'Cancel', 'wp-referral-code' ),
-					'error'       => __( 'Something went wrong!', 'wp-referral-code' ),
+					'title'       => __( 'Are you sure?', 'nv-referral-code' ),
+					'text'        => __( 'You won\'t be able to revert this!', 'nv-referral-code' ),
+					'confirmText' => __( 'Yes, delete it!', 'nv-referral-code' ),
+					'cancelText'  => __( 'Cancel', 'nv-referral-code' ),
+					'error'       => __( 'Something went wrong!', 'nv-referral-code' ),
 				),
 				'confirmedAlert' => array(
-					'title' => __( 'Deleted!', 'wp-referral-code' ),
-					'text'  => __( 'The relation has been deleted.', 'wp-referral-code' ),
+					'title' => __( 'Deleted!', 'nv-referral-code' ),
+					'text'  => __( 'The relation has been deleted.', 'nv-referral-code' ),
 				),
 				'nonce'          => wp_create_nonce( 'wp_referral_code_delete_user_relation_nonce' ),
 				'nonceAdd'       => wp_create_nonce( 'wp_referral_code_add_user_relation_nonce' ),
@@ -121,7 +121,7 @@ final class Shalior_Grs_User_Edit {
 			}
 
 			if ( (int) $ref_code_owner_id !== $user->ID ) {
-				$errors->add( 'unique-ref-code', __( 'Submitted refer code is already in use', 'wp-referral-code' ) );
+				$errors->add( 'unique-ref-code', __( 'Submitted refer code is already in use', 'nv-referral-code' ) );
 			}
 		}
 	}
@@ -151,7 +151,7 @@ final class Shalior_Grs_User_Edit {
 		if ( $to_add_user_id === $referrer_id ) {
 			wp_send_json_error(
 				array(
-					'error' => __( 'You can not add yourself as a referrer', 'wp-referral-code' ),
+					'error' => __( 'You can not add yourself as a referrer', 'nv-referral-code' ),
 				),
 				200
 			);
@@ -163,7 +163,7 @@ final class Shalior_Grs_User_Edit {
 		if ( $already_has_referrer ) {
 			wp_send_json_error(
 				array(
-					'error' => __( 'User already has a referrer, You might want to first delete the relation', 'wp-referral-code' ),
+					'error' => __( 'User already has a referrer, You might want to first delete the relation', 'nv-referral-code' ),
 				),
 				200
 			);
