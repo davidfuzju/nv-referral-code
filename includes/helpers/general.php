@@ -226,6 +226,7 @@ if ( ! function_exists( 'wp_referral_code_delete_relation_2' ) ) {
 		$users_referred_by_referrer = array_unique_2( $users_referred_by_referrer );
 		update_user_meta( $referrer_id, 'wrc_invited_users_2', $users_referred_by_referrer );
 		update_user_meta( $to_delete_user_id, 'wrc_referrer_id', null );
+		update_user_meta( $to_delete_user_id, 'wrc_referrer_code', null );
 		update_user_meta( $to_delete_user_id, 'wrc_referrer_url', null );
 
 		do_action( 'wp_referral_code_after_relation_deleted', $to_delete_user_id, $referrer_id );

@@ -171,10 +171,12 @@ final class Shalior_Grs_User_Edit {
 		}
 
 		// user referred by 
+		$referer_code = (new WP_Refer_Code( $referrer_id ))->get_ref_code();
 		$referrer_url = null;
 
 		// set referrer as inviter of new user.
 		update_user_meta( $to_add_user_id, 'wrc_referrer_id', $referrer_id );
+		update_user_meta( $to_add_user_id, 'wrc_referrer_code', $referer_code );
 		update_user_meta( $to_add_user_id, 'wrc_referrer_url', $referrer_url);
 
 		// adding new user to referrer invited list.
