@@ -35,6 +35,15 @@
 		</tr>
 		<tr>
 			<td class="wrc-shortcode">
+				[wp-referral-code var="copy_ref_link_per_page"]
+			</td>
+			<td>
+				<?php esc_html_e( 'Copy Referral Link Per Page', 'wp-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays a user-friendly box that allows the current user to easily copy their referral link base on current web page url link', 'wp-referral-code' ); ?>
+			</td>
+		</tr>
+		<tr>
+			<td class="wrc-shortcode">
 				[wp-referral-code var="ref_code"]
 			</td>
 			<td>

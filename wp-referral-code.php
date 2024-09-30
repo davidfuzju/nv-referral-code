@@ -68,7 +68,6 @@ function run_wp_referral_code() {
 $wp_referral_code_options = get_option(
 	'wp_referral_code_options',
 	array(
-		'code_length'     => 6,
 		'register_url'    => wp_registration_url(),
 		'expiration_time' => 10,
 	)

@@ -53,13 +53,6 @@ final class WP_Referral_Code_Settings {
 		add_action( 'admin_menu', array( $this, 'add_options_page' ) );
 	}
 
-
-	public function field_code_length( $args ) {
-		$option = $this->options;
-		// include html.
-		include_once WP_REFERRAL_CODE_PATH . 'admin/partials/options/field-code-length.php';
-	}
-
 	public function field_register_url( $args ) {
 		$option = $this->options;
 		// include html.
@@ -104,20 +97,6 @@ final class WP_Referral_Code_Settings {
 			)
 		);
 
-		// code length field.
-		add_settings_field(
-			'wp_referral_code_code_length', // as of WP 4.6 this value is used only internally
-			// use $args' label_for to populate the id inside the callback.
-			__( 'Refer code length', 'wp-referral-code' ),
-			array( $this, 'field_code_length' ),
-			$this->page_slug,
-			'wp_referral_code_section_1',
-			array(
-				'label_for' => 'code_length',
-				'class'     => 'wrc_row',
-			)
-		);
-
 		add_settings_field(
 			'wp_referral_code_expiration_time', // as of WP 4.6 this value is used only internally
 			// use $args' label_for to populate the id inside the callback.
@@ -141,11 +120,6 @@ final class WP_Referral_Code_Settings {
 		if ( $this->options == $data ) {
 			return $data;
 		}
-		// validate code_length.
-		if ( ! ( $data['code_length'] >= 3 && $data['code_length'] <= 10 && is_numeric( $data['code_length'] ) ) ) {
-			add_settings_error( $this->page_slug, $this->page_slug, __( 'Chose a number between 3 & 10', 'wp-referral-code' ) );
-			$have_err = true;
-		}
 		// validate register_url.
 		if ( wrc_is_valid_url( $data['register_url'] ) === false ) {
 			add_settings_error( $this->page_slug, $this->page_slug, __( 'Register Url is not valid', 'wp-referral-code' ) );
@@ -158,13 +132,7 @@ final class WP_Referral_Code_Settings {
 		}
 
 		if ( ! $have_err ) {
-			// reset ref codes if no err found and code_length value has changed.
-			if ( $this->options['code_length'] != $data['code_length'] ) {
-				wrc_set_ref_code_all_users( true, $data['code_length'] );
-			}
-
 			// sanitize.
-			$data['code_length']     = sanitize_text_field( $data['code_length'] );
 			$data['register_url']    = esc_url_raw( $data['register_url'] );
 			$data['expiration_time'] = sanitize_text_field( $data['expiration_time'] );
 

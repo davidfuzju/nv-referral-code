@@ -125,12 +125,12 @@ class WP_Refer_Code {
 	}
 
 	/**
-	 * Returns array of user ids invited by this user
-	 *
-	 * @param null $user_id User id.
-	 *
+ 	 * Returns array of user ids invited by this user
+ 	 *
+ 	 * @param null $user_id User id.
+ 	 *
 	 * @return array
-	 */
+ 	 */
 	public function get_invited_users_id( $user_id = null ) {
 		if ( null === $user_id ) {
 			$user_id = $this->user_id;
@@ -139,4 +139,21 @@ class WP_Refer_Code {
 
 		return empty( $invited ) ? array() : $invited;
 	}
+
+	/**
+	 * Returns array of users invited by this user
+	 *
+	 * @param null $user_id User id.
+	 *
+	 * @return array element is object { i => $user_id, j => $referrer_url }
+	 */
+	public function get_invited_users( $user_id = null ) {
+		if ( null === $user_id ) {
+			$user_id = $this->user_id;
+		}
+		$invited = get_user_meta( $user_id, 'wrc_invited_users_2', true );
+
+		return empty( $invited ) ? array() : $invited;
+	}
+
 }

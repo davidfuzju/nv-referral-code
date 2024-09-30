@@ -64,6 +64,21 @@ function wp_referral_code_user_param_shortcodes_init() {
 				require WP_REFERRAL_CODE_PATH . 'public/partials/copy-ref-link-box.php';
 
 				return ob_get_clean();
+			case 'copy_ref_link_per_page':// [wp-referral-code var="copy_ref_link_per_page"]
+				if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
+					// Enqueue jquery only if not enqueued before.
+					wp_enqueue_script( 'jquery' );
+				}
+				if ( ! wp_script_is( 'clipboard', 'enqueued' ) ) {
+					// Enqueue clipboard only if not enqueued before.
+					wp_enqueue_script( 'clipboard' );
+				}
+				wp_enqueue_script( 'wrc-copy-ref-link', plugin_dir_url( __FILE__ ) . 'js/wp-referral-code-public.js', array(), WP_REFERRAL_CODE_VERSION, true );
+				wp_enqueue_style( 'wrc-copy-ref-link-styles', plugin_dir_url( __FILE__ ) . 'css/wp-referral-code-copy-link-per-page.css', array(), WP_REFERRAL_CODE_VERSION );
+				ob_start();
+				require WP_REFERRAL_CODE_PATH . 'public/partials/copy-ref-link-box-per-page.php';
+
+				return ob_get_clean();
 		}
 
 		// [wp-referral-code var="valid_invited_count"]

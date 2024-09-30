@@ -71,7 +71,6 @@ class WP_Referral_Code {
 		$this->options = get_option(
 			'wp_referral_code_options',
 			array(
-				'code_length'     => 5,
 				'register_url'    => wp_registration_url(),
 				'expiration_time' => 10,
 			)
@@ -164,10 +163,18 @@ class WP_Referral_Code {
 			return;
 		}
 
+		// expiration time
+		$expires    = isset( $this->options['expiration_time'] ) ? ( $this->options['expiration_time'] * HOUR_IN_SECONDS ) : ( 10 * HOUR_IN_SECONDS );
+
+		// set refer_code in Cookies
 		$name       = 'refer_code';
 		$refer_code = sanitize_text_field( wp_unslash( $_GET[ wrc_get_ref_code_query() ] ) );
-		$expires    = isset( $this->options['expiration_time'] ) ? ( $this->options['expiration_time'] * HOUR_IN_SECONDS ) : ( 10 * HOUR_IN_SECONDS );
 		wrc_set_cookie( $name, $refer_code, time() + $expires );
+		
+		// set refer_url in Cookies
+		$name2      = 'refer_url';
+		$refer_url  = wrc_get_current_url();
+		wrc_set_cookie( $name2, $refer_url, time() + $expires );
 		// phpcs:enable
 	}
 
