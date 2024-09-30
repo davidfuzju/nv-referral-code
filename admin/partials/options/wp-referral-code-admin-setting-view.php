@@ -3,18 +3,18 @@
 	<form action="options.php" method="post">
 		<?php
 		// output security fields for the registered setting.
-		settings_fields( 'wp-referral-code' );
+		settings_fields( 'nv-referral-code' );
 		// output setting sections and their fields.
-		do_settings_sections( 'wp-referral-code' );
+		do_settings_sections( 'nv-referral-code' );
 		// output save settings button.
-		submit_button( __( 'Save Settings', 'wp-referral-code' ) );
+		submit_button( __( 'Save Settings', 'nv-referral-code' ) );
 		?>
 	</form>
 
 </div>
 
 <div class="wrap wrc-shortcodes-table">
-	<h1><?php esc_html_e( 'Available shortcodes', 'wp-referral-code' ); ?></h1>
+	<h1><?php esc_html_e( 'Available shortcodes', 'nv-referral-code' ); ?></h1>
 	<span style="margin: .5rem 0">Click on Shortcode to copy it</span>
 	<table>
 		<thead>
@@ -26,69 +26,69 @@
 		<tbody>
 		<tr>
 			<td class="wrc-shortcode">
-				[wp-referral-code var="copy_ref_link"]
+				[nv-referral-code var="copy_ref_link"]
 			</td>
 			<td>
-				<?php esc_html_e( 'Copy Referral Link', 'wp-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays a user-friendly box that allows the current user to easily copy their referral link', 'wp-referral-code' ); ?>
+				<?php esc_html_e( 'Copy Referral Link', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays a user-friendly box that allows the current user to easily copy their referral link', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="wrc-shortcode">
-				[wp-referral-code var="copy_ref_link_per_page"]
+				[nv-referral-code var="copy_ref_link_per_page"]
 			</td>
 			<td>
-				<?php esc_html_e( 'Copy Referral Link Per Page', 'wp-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays a user-friendly box that allows the current user to easily copy their referral link base on current web page url link', 'wp-referral-code' ); ?>
+				<?php esc_html_e( 'Copy Referral Link Per Page', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays a user-friendly box that allows the current user to easily copy their referral link base on current web page url link', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 		<tr>
 			<td class="wrc-shortcode">
-				[wp-referral-code var="ref_code"]
+				[nv-referral-code var="ref_code"]
 			</td>
 			<td>
-				<?php esc_html_e( 'Referral Code', 'wp-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays the current user\'s unique referral code', 'wp-referral-code' ); ?>
-			</td>
-		</tr>
-
-		<tr>
-			<td class="wrc-shortcode">
-				[wp-referral-code var="ref_link"]
-			</td>
-			<td>
-				<?php esc_html_e( 'Referral Link', 'wp-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays the referral link specific to the current user. This includes the user\'s referral code and registration link for new users', 'wp-referral-code' ); ?>
+				<?php esc_html_e( 'Referral Code', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays the current user\'s unique referral code', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 
 		<tr>
 			<td class="wrc-shortcode">
-				[wp-referral-code var="invited_count"]
+				[nv-referral-code var="ref_link"]
 			</td>
 			<td>
-				<?php esc_html_e( 'Invited User Count', 'wp-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays the number of users that the current user has successfully referred', 'wp-referral-code' ); ?>
+				<?php esc_html_e( 'Referral Link', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays the referral link specific to the current user. This includes the user\'s referral code and registration link for new users', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 
 		<tr>
 			<td class="wrc-shortcode">
-				[wp-referral-code var="invited_list"]
+				[nv-referral-code var="invited_count"]
 			</td>
 			<td>
-				<?php esc_html_e( 'Invited User List', 'wp-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays a list of users that the current user has successfully referred. The default display is the list of usernames, but you can use hooks to customize the display', 'wp-referral-code' ); ?>
+				<?php esc_html_e( 'Invited User Count', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays the number of users that the current user has successfully referred', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 
 		<tr>
 			<td class="wrc-shortcode">
-				[wp-referral-code var="most_referring_users"]
+				[nv-referral-code var="invited_list"]
 			</td>
 			<td>
-				<?php esc_html_e( 'Top Referring Users', 'wp-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays a list of the top referring users. By default, the list displays the top 10 users, but you can use hooks to customize the number of users displayed', 'wp-referral-code' ); ?>
+				<?php esc_html_e( 'Invited User List', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays a list of users that the current user has successfully referred. The default display is the list of usernames, but you can use hooks to customize the display', 'nv-referral-code' ); ?>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="wrc-shortcode">
+				[nv-referral-code var="most_referring_users"]
+			</td>
+			<td>
+				<?php esc_html_e( 'Top Referring Users', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays a list of the top referring users. By default, the list displays the top 10 users, but you can use hooks to customize the number of users displayed', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 		</tbody>
@@ -107,7 +107,7 @@
 
 <div class="wrc-toast">
 	<div class="wrc-toast-content">
-		<?php esc_html_e( 'Copied to clipboard!', 'wp-referral-code' ); ?>
+		<?php esc_html_e( 'Copied to clipboard!', 'nv-referral-code' ); ?>
 	</div>
 </div>
 

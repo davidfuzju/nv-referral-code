@@ -2,8 +2,8 @@
 /**
  * Handles custom functionality on the edit user screen,
  *
- * @package    NV Referral Code
- * @subpackage Admin
+ * @package    WP_Referral_Code
+ * @subpackage WP_Referral_Code/Admin
  * @author Shalior<contact@shalior.ir>
  */
 

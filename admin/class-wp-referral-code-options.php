@@ -11,7 +11,7 @@
 final class WP_Referral_Code_Settings {
 
 	private static $instance;
-	public $page_slug = 'wp-referral-code';
+	public $page_slug = 'nv-referral-code';
 	private $options;
 
 	/**
@@ -72,11 +72,11 @@ final class WP_Referral_Code_Settings {
 			'sanitize_callback' => array( $this, 'sanitize_callback' ),
 			'show_in_rest'      => false,
 		);
-		register_setting( $this->page_slug, 'wp_referral_code_options', $args );
+		register_setting( $this->page_slug, 'nv_referral_code_options', $args );
 		// register a new section.
 		add_settings_section(
 			'wp_referral_code_section_1',
-			__( 'Settings', 'wp-referral-code' ),
+			__( 'Settings', 'nv-referral-code' ),
 			function () {
 				// nothing!
 			},
@@ -87,7 +87,7 @@ final class WP_Referral_Code_Settings {
 		add_settings_field(
 			'wp_referral_code_register_url', // as of WP 4.6 this value is used only internally
 			// use $args' label_for to populate the id inside the callback.
-			__( 'Register url', 'wp-referral-code' ),
+			__( 'Register url', 'nv-referral-code' ),
 			array( $this, 'field_register_url' ),
 			$this->page_slug,
 			'wp_referral_code_section_1',
@@ -100,7 +100,7 @@ final class WP_Referral_Code_Settings {
 		add_settings_field(
 			'wp_referral_code_expiration_time', // as of WP 4.6 this value is used only internally
 			// use $args' label_for to populate the id inside the callback.
-			__( 'Expiration time(hours)', 'wp-referral-code' ),
+			__( 'Expiration time(hours)', 'nv-referral-code' ),
 			array( $this, 'field_expiration_time' ),
 			$this->page_slug,
 			'wp_referral_code_section_1',
@@ -122,12 +122,12 @@ final class WP_Referral_Code_Settings {
 		}
 		// validate register_url.
 		if ( wrc_is_valid_url( $data['register_url'] ) === false ) {
-			add_settings_error( $this->page_slug, $this->page_slug, __( 'Register Url is not valid', 'wp-referral-code' ) );
+			add_settings_error( $this->page_slug, $this->page_slug, __( 'Register Url is not valid', 'nv-referral-code' ) );
 			$have_err = true;
 		}
 
 		if ( empty( $data['expiration_time'] ) || ! is_numeric( $data['expiration_time'] ) ) {
-			add_settings_error( $this->page_slug, $this->page_slug, __( 'Expiration time is not valid', 'wp-referral-code' ) );
+			add_settings_error( $this->page_slug, $this->page_slug, __( 'Expiration time is not valid', 'nv-referral-code' ) );
 			$have_err = true;
 		}
 
@@ -144,8 +144,8 @@ final class WP_Referral_Code_Settings {
 
 	public function add_options_page() {
 		add_options_page(
-			'WP Referral Code Options',
-			'WP Referral Code',
+			'NV Referral Code Options',
+			'NV Referral Code',
 			'manage_options',
 			$this->page_slug,
 			array( $this, 'get_options_page_html' )
