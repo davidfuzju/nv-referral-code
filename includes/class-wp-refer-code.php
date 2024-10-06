@@ -97,6 +97,24 @@ class WP_Refer_Code {
 		if ( metadata_exists( 'user', $this->user_id, 'wrc_ref_code' ) ) {
 			$this->ref_code = $ref_code;
 
+			/// update history users' wrc_referrer_code
+			$users = get_users(
+				array(
+					'meta_key'   => 'wrc_referrer_id',
+					'meta_value' => $this->user_id,
+					'fields'     => array( 'ID' ),
+				)
+			);
+
+			// Loop through each user and update their 'wrc_referrer_code_2' field
+			foreach ( $users as $user ) {
+    				$user_id = $user->ID; // Get the user ID
+
+    				// Update the 'wrc_referrer_code_2' field for the user
+				update_user_meta( $user_id, 'wrc_referrer_code_2', $this->ref_code );
+			}
+
+ 			/// update current user's wrc_ref_code
 			return update_user_meta( $this->user_id, 'wrc_ref_code', $ref_code );
 		}
 

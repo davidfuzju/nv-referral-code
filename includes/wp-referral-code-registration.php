@@ -58,6 +58,7 @@ function wp_referral_code_handle_new_registration( $user_id ) {
 	// set referrer as inviter of new user.
 	update_user_meta( $referee_user_id, 'wrc_referrer_id', $referrer_user_id );
 	update_user_meta( $referee_user_id, 'wrc_referrer_code', $ref_code );
+	update_user_meta( $referee_user_id, 'wrc_referrer_code_2', $ref_code );
 	update_user_meta( $referee_user_id, 'wrc_referrer_url', $ref_url);
 
 	// adding new user to referrer invited list.
