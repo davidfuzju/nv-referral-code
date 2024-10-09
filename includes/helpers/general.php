@@ -261,10 +261,13 @@ function nv_get_referral_url() {
 		parse_str($url_components['query'], $query_params);
 	}
 
-	// 添加或修改查询参数 'ref'
-	$user_id  = get_current_user_id();
-	$ref_code = new WP_Refer_Code( $user_id );
-	$query_params['ref'] = $ref_code->get_ref_code(); // 获取推荐码并添加到 query 参数中
+	// 检查用户是否已登录
+	if (is_user_logged_in()) {
+		// 添加或修改查询参数 'ref'
+		$user_id  = get_current_user_id();
+		$ref_code = new WP_Refer_Code( $user_id );
+		$query_params['ref'] = $ref_code->get_ref_code(); // 获取推荐码并添加到 query 参数中
+	}
 
 	// 将修改后的 query 参数重新组装回 URL 组件
 	$url_components['query'] = http_build_query($query_params);
