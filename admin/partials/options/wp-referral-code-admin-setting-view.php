@@ -26,6 +26,15 @@
 		<tbody>
 		<tr>
 			<td class="wrc-shortcode">
+				[nv-referral-code var="member_id"]
+			</td>
+			<td>
+				<?php esc_html_e( 'Member ID', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays a user-friendly Member ID', 'nv-referral-code' ); ?>
+			</td>
+		</tr>
+		<tr>
+			<td class="wrc-shortcode">
 				[nv-referral-code var="copy_ref_link"]
 			</td>
 			<td>
