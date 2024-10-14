@@ -33,6 +33,7 @@
 				<?php esc_html_e( 'Displays a user-friendly Member ID', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
+
 		<tr>
 			<td class="wrc-shortcode">
 				[nv-referral-code var="copy_ref_link"]
@@ -42,6 +43,7 @@
 				<?php esc_html_e( 'Displays a user-friendly box that allows the current user to easily copy their referral link', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
+
 		<tr>
 			<td class="wrc-shortcode">
 				[nv-referral-code var="copy_ref_link_per_page"]
@@ -51,6 +53,7 @@
 				<?php esc_html_e( 'Displays a user-friendly box that allows the current user to easily copy their referral link base on current web page url link', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
+
 		<tr>
 			<td class="wrc-shortcode">
 				[nv-referral-code var="ref_code"]
@@ -68,6 +71,16 @@
 			<td>
 				<?php esc_html_e( 'Referral Link', 'nv-referral-code' ); ?><br>
 				<?php esc_html_e( 'Displays the referral link specific to the current user. This includes the user\'s referral code and registration link for new users', 'nv-referral-code' ); ?>
+			</td>
+		</tr>
+
+		<tr>
+			<td class="wrc-shortcode">
+				[nv-referral-code var="referrer_code"]
+			</td>
+			<td>
+				<?php esc_html_e( 'Referrer Code', 'nv-referral-code' ); ?><br>
+				<?php esc_html_e( 'Displays the referral code of the new user’s referrer.', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 

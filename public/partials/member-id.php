@@ -11,8 +11,8 @@
 
 ?>
 
-<?php if (!empty($member_id)) : ?>
-    <p><?php echo esc_html($member_id); ?></p>
+<?php if (!empty($user_id)) : ?>
+    <p><?php echo esc_html($user_id); ?></p>
 <?php else : ?>
     <p>You are not logged in.</p>
 <?php endif; ?>

@@ -21,12 +21,6 @@ function wp_referral_code_user_param_shortcodes_init() {
 
 		switch ( $para ) {
 			case 'member_id':// [nv-referral-code var="member_id"]
-				$member_id = null;
-				if (is_user_logged_in()) {
-					$current_user = wp_get_current_user();
-					$member_id = $current_user->ID;
-				}
-
 				ob_start();
 				require WP_REFERRAL_CODE_PATH . 'public/partials/member-id.php';
 
@@ -35,6 +29,13 @@ function wp_referral_code_user_param_shortcodes_init() {
 				return $ref_code->get_ref_code();
 			case 'ref_link':// [nv-referral-code var="ref_link"]
 				return $ref_code->get_ref_link();
+			case 'referrer_code':// [nv-referral-code var="referrer_code"]
+				$referrer_code = get_user_meta( $user_id, 'wrc_referrer_code_2', true );
+				
+				ob_start();
+				require WP_REFERRAL_CODE_PATH . 'public/partials/referrer-code.php';
+
+				return ob_get_clean();
 			case 'invited_count':// [nv-referral-code var="invited_count"]
 				return empty( $ref_code->get_invited_users_id() ) ? '0' : count( $ref_code->get_invited_users_id() );
 			case 'most_referring_users': // [nv-referral-code var="most_referring_users"]
