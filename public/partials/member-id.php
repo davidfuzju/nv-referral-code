@@ -12,5 +12,7 @@
 ?>
 
 <?php if (!empty($member_id)) : ?>
-    <p>Your Member ID: <?php echo esc_html($member_id); ?></p>
+    <p><?php echo esc_html($member_id); ?></p>
+<?php else : ?>
+    <p>You are not logged in.</p>
 <?php endif; ?>
