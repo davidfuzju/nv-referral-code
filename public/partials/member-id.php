@@ -10,9 +10,8 @@
 
 
 ?>
-
 <?php if (!empty($user_id)) : ?>
-    <p><?php echo esc_html($user_id); ?></p>
+<?php echo esc_html($user_id); ?>
 <?php else : ?>
-    <p>You are not logged in.</p>
+<?php echo esc_html('None'); ?>
 <?php endif; ?>

@@ -6,9 +6,8 @@
  * @package           WP_Referral_Code
  */
 ?>
-
 <?php if (!empty($referrer_code)) : ?>
-    <p><?php echo esc_html($referrer_code); ?></p>
+<?php echo esc_html($referrer_code); ?>
 <?php else : ?>
-    <p>null</p>
+<?php echo esc_html("None"); ?>
 <?php endif; ?>

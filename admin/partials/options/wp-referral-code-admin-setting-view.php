@@ -30,7 +30,7 @@
 			</td>
 			<td>
 				<?php esc_html_e( 'Member ID', 'nv-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays a user-friendly Member ID', 'nv-referral-code' ); ?>
+				<?php esc_html_e( 'Displays a user-friendly Member ID Value', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 
@@ -80,7 +80,7 @@
 			</td>
 			<td>
 				<?php esc_html_e( 'Referrer Code', 'nv-referral-code' ); ?><br>
-				<?php esc_html_e( 'Displays the referral code of the new user’s referrer.', 'nv-referral-code' ); ?>
+				<?php esc_html_e( 'Displays the referral code value of the new user’s referrer.', 'nv-referral-code' ); ?>
 			</td>
 		</tr>
 
