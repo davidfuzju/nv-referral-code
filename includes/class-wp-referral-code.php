@@ -108,6 +108,7 @@ class WP_Referral_Code
 		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-wp-referral-code-public.php';
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-wp-refer-code.php';
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/wp-referral-code-registration.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/wp-referral-code-manual-setting-referrer.php';
 	}
 
 	/**
