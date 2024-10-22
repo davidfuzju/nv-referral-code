@@ -38,6 +38,13 @@ function wp_referral_code_user_param_shortcodes_init()
 				require WP_REFERRAL_CODE_PATH . 'public/partials/referrer-code.php';
 
 				return ob_get_clean();
+			case 'referrer_username': // [nv-referral-code var="referrer_username"]
+				$referrer_id = get_user_meta($user_id, 'wrc_referrer_id', true);
+				$nickname = get_user_meta($referrer_id, 'nickname', true);
+				$firstName = get_user_meta($referrer_id, 'first_name', true);
+				$lastName = get_user_meta($referrer_id, 'last_name', true);
+
+				return $firstName . ' ' . $lastName . '(' . $nickname . ')';
 			case 'invited_count': // [nv-referral-code var="invited_count"]
 				return empty($ref_code->get_invited_users_id()) ? '0' : count($ref_code->get_invited_users_id());
 			case 'most_referring_users': // [nv-referral-code var="most_referring_users"]
