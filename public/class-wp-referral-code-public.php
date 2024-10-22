@@ -9,7 +9,8 @@
  * @package    WP_Referral_Code
  * @subpackage WP_Referral_Code/public
  */
-class WP_Referral_Code_Public {
+class WP_Referral_Code_Public
+{
 
 	/**
 	 * The ID of this plugin.
@@ -37,12 +38,12 @@ class WP_Referral_Code_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct( $wp_referral_code, $version ) {
+	public function __construct($wp_referral_code, $version)
+	{
 
 		$this->wp_referral_code = $wp_referral_code;
 		$this->version          = $version;
 		$this->load_dependencies();
-
 	}
 
 	/**
@@ -50,8 +51,8 @@ class WP_Referral_Code_Public {
 	 *
 	 * @return void
 	 */
-	public function load_dependencies() {
+	public function load_dependencies()
+	{
 		require_once WP_REFERRAL_CODE_PATH . '/public/shortcode-wp-referral-code.php';
 	}
-
 }

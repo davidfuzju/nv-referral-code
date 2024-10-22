@@ -14,7 +14,8 @@
  * @subpackage WP_Referral_Code/includes
  * @author     Shalior <contact@shalior.ir>
  */
-class WP_Referral_Code {
+class WP_Referral_Code
+{
 
 	private static $instance;
 
@@ -54,8 +55,9 @@ class WP_Referral_Code {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
-		if ( defined( 'WP_REFERRAL_CODE_VERSION' ) ) {
+	public function __construct()
+	{
+		if (defined('WP_REFERRAL_CODE_VERSION')) {
 			$this->version = WP_REFERRAL_CODE_VERSION;
 		} else {
 			$this->version = '1.0.0';
@@ -66,7 +68,7 @@ class WP_Referral_Code {
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
-		add_action( 'init', array( $this, 'init' ), 1 );
+		add_action('init', array($this, 'init'), 1);
 
 		$this->options = get_option(
 			'wp_referral_code_options',
@@ -83,9 +85,10 @@ class WP_Referral_Code {
 	 *
 	 * @return WP_Referral_Code
 	 */
-	public static function get_instance() {
+	public static function get_instance()
+	{
 
-		if ( ! self::$instance ) {
+		if (! self::$instance) {
 			self::$instance = new self();
 		}
 
@@ -98,12 +101,13 @@ class WP_Referral_Code {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/helpers/bootstrap.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wp-referral-code-admin.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wp-referral-code-public.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-wp-refer-code.php';
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wp-referral-code-registration.php';
+	private function load_dependencies()
+	{
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/helpers/bootstrap.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-wp-referral-code-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-wp-referral-code-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-wp-refer-code.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/wp-referral-code-registration.php';
 	}
 
 	/**
@@ -113,8 +117,9 @@ class WP_Referral_Code {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
-		$plugin_admin = new WP_Referral_Code_Admin( $this->get_wp_referral_code(), $this->get_version() );
+	private function define_admin_hooks()
+	{
+		$plugin_admin = new WP_Referral_Code_Admin($this->get_wp_referral_code(), $this->get_version());
 	}
 
 	/**
@@ -124,7 +129,8 @@ class WP_Referral_Code {
 	 * @return    string    The name of the plugin.
 	 * @since     1.0.0
 	 */
-	public function get_wp_referral_code() {
+	public function get_wp_referral_code()
+	{
 		return $this->wp_referral_code;
 	}
 
@@ -134,7 +140,8 @@ class WP_Referral_Code {
 	 * @return    string    The version number of the plugin.
 	 * @since     1.0.0
 	 */
-	public function get_version() {
+	public function get_version()
+	{
 		return $this->version;
 	}
 
@@ -146,8 +153,9 @@ class WP_Referral_Code {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
-		$plugin_public = new WP_Referral_Code_Public( $this->get_wp_referral_code(), $this->get_version() );
+	private function define_public_hooks()
+	{
+		$plugin_public = new WP_Referral_Code_Public($this->get_wp_referral_code(), $this->get_version());
 	}
 
 
@@ -157,25 +165,25 @@ class WP_Referral_Code {
 	 *
 	 * @return void
 	 */
-	public function init() {
+	public function init()
+	{
 		// phpcs:disable WordPress.Security.NonceVerification.Recommended
-		if ( ! isset( $_GET[ wrc_get_ref_code_query() ] ) ) {
+		if (! isset($_GET[wrc_get_ref_code_query()])) {
 			return;
 		}
 
 		// expiration time
-		$expires    = isset( $this->options['expiration_time'] ) ? ( $this->options['expiration_time'] * HOUR_IN_SECONDS ) : ( 10 * HOUR_IN_SECONDS );
+		$expires    = isset($this->options['expiration_time']) ? ($this->options['expiration_time'] * HOUR_IN_SECONDS) : (10 * HOUR_IN_SECONDS);
 
 		// set refer_code in Cookies
 		$name       = 'refer_code';
-		$refer_code = sanitize_text_field( wp_unslash( $_GET[ wrc_get_ref_code_query() ] ) );
-		wrc_set_cookie( $name, $refer_code, time() + $expires );
-		
+		$refer_code = sanitize_text_field(wp_unslash($_GET[wrc_get_ref_code_query()]));
+		wrc_set_cookie($name, $refer_code, time() + $expires);
+
 		// set refer_url in Cookies
 		$name2      = 'refer_url';
 		$refer_url  = wrc_get_current_url();
-		wrc_set_cookie( $name2, $refer_url, time() + $expires );
+		wrc_set_cookie($name2, $refer_url, time() + $expires);
 		// phpcs:enable
 	}
-
 }

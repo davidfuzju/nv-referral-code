@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Referrer Code Short Code View
  *

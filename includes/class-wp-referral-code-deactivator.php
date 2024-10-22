@@ -10,7 +10,8 @@
  * @subpackage WP_Referral_Code/includes
  * @author     Shalior <contact@shalior.ir>
  */
-class WP_Referral_Code_Deactivator {
+class WP_Referral_Code_Deactivator
+{
 
 	/**
 	 * Short Description. (use period)
@@ -19,8 +20,5 @@ class WP_Referral_Code_Deactivator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function deactivate() {
-
-	}
-
+	public static function deactivate() {}
 }

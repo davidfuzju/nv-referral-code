@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Member Id shortcode view
  *
@@ -6,7 +7,7 @@
  * @package           WP_Referral_Code
  */
 
-    // 检查用户是否已登录
+// 检查用户是否已登录
 
 
 ?>

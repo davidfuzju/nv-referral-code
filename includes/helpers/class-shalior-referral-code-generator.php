@@ -3,7 +3,8 @@
 /**
  * Handles Creating ref codes
  */
-class Shalior_Referral_Code_Generator {
+class Shalior_Referral_Code_Generator
+{
 	private static $instance = null;
 
 	/**
@@ -12,16 +13,18 @@ class Shalior_Referral_Code_Generator {
 	 * @return Shalior_Referral_Code_Generator|null
 	 * @deprecated Use get_instance instead
 	 */
-	public static function getInstance() {
-		if ( null === self::$instance ) {
+	public static function getInstance()
+	{
+		if (null === self::$instance) {
 			self::$instance = new Shalior_Referral_Code_Generator();
 		}
 
 		return self::$instance;
 	}
 
-	public static function get_instance() {
-		if ( null === self::$instance ) {
+	public static function get_instance()
+	{
+		if (null === self::$instance) {
 			self::$instance = new Shalior_Referral_Code_Generator();
 		}
 
@@ -42,21 +45,22 @@ class Shalior_Referral_Code_Generator {
 	 *
 	 * @return string
 	 */
-	public function get_ref_code( $length = null ) {
+	public function get_ref_code($length = null)
+	{
 
 		$ref_code    = $this->generate_ref_code();
-		if ( $this->is_unique( $ref_code ) ) {
+		if ($this->is_unique($ref_code)) {
 			return $ref_code;
 		}
 
 		$validated = false;
 		do {
 			$ref_code  = $this->generate_ref_code();
-			$validated = $this->is_unique( $ref_code );
-			if ( $validated ) {
+			$validated = $this->is_unique($ref_code);
+			if ($validated) {
 				return $ref_code;
 			}
-		} while ( ! $validated );
+		} while (! $validated);
 
 		return $ref_code;
 	}
@@ -68,7 +72,8 @@ class Shalior_Referral_Code_Generator {
 	 *
 	 * @return bool|string
 	 */
-	private function generate_ref_code() {
+	private function generate_ref_code()
+	{
 		$year = date("y"); // Get the last two digits of the year
 		$month = date("m"); // Get the two-digit month
 		// Generate a random part that follows the rules
@@ -80,7 +85,8 @@ class Shalior_Referral_Code_Generator {
 	/**
 	 *  Generate an 8-digit random number and ensure it follows the rules
 	 */
-	function generateValidRandomPart() {
+	function generateValidRandomPart()
+	{
 		do {
 			$random_part = str_pad(mt_rand(0, 99999999), 8, '0', STR_PAD_LEFT); // Generate 8 digits, pad with 0s if needed
 		} while ($this->hasInvalidSequences($random_part));
@@ -90,28 +96,42 @@ class Shalior_Referral_Code_Generator {
 	/**
 	 *  Check if there are more than four consecutive identical digits or increasing/decreasing sequences
 	 */
-	function hasInvalidSequences($number) {
+	function hasInvalidSequences($number)
+	{
 		// Check if there are more than four consecutive identical digits
 		if (preg_match('/(\d)\1{3,}/', $number)) {
 			return true;
 		}
-		
+
 		// Check if there are more than four consecutive increasing or decreasing sequences
 		$sequential_patterns = [
-			'0123', '1234', '2345', '3456', '4567', '5678', '6789',
-			'9876', '8765', '7654', '6543', '5432', '4321', '3210'
+			'0123',
+			'1234',
+			'2345',
+			'3456',
+			'4567',
+			'5678',
+			'6789',
+			'9876',
+			'8765',
+			'7654',
+			'6543',
+			'5432',
+			'4321',
+			'3210'
 		];
-		
+
 		foreach ($sequential_patterns as $pattern) {
 			if (strpos($number, $pattern) !== false) {
 				return true;
 			}
 		}
-		
+
 		return false;
 	}
 
-	private function is_unique( $ref_code ) {
+	private function is_unique($ref_code)
+	{
 		$user = get_users(
 			array(
 				'meta_key'     => 'wrc_ref_code',
@@ -120,15 +140,10 @@ class Shalior_Referral_Code_Generator {
 				'fields'       => 'ids',
 			)
 		);
-		if ( count( $user ) > 0 ) {
+		if (count($user) > 0) {
 			return false;
 		}
 
 		return true;
 	}
-
 }
-
-
-
-
