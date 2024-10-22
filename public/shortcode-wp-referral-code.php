@@ -44,7 +44,7 @@ function wp_referral_code_user_param_shortcodes_init()
 				$firstName = get_user_meta($referrer_id, 'first_name', true);
 				$lastName = get_user_meta($referrer_id, 'last_name', true);
 
-				return $firstName . ' ' . $lastName . '(' . $nickname . ')';
+				return "{$firstName} {$lastName}({$nickname})";
 			case 'invited_count': // [nv-referral-code var="invited_count"]
 				return empty($ref_code->get_invited_users_id()) ? '0' : count($ref_code->get_invited_users_id());
 			case 'most_referring_users': // [nv-referral-code var="most_referring_users"]
