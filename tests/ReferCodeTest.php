@@ -20,7 +20,7 @@ class ReferCodeTest extends WP_UnitTestCase
 		remove_action('user_register', 'wp_referral_code_handle_new_registration', 20);
 		$user = self::factory()->user->create_and_get();
 
-		\PHPUnit\Framework\assertEmpty($user->get('wrc_ref_code'));
+		assertEmpty($user->get('wrc_ref_code'));
 
 		$ref_code_instance = new WP_Refer_Code($user->ID);
 		$ref_code          = $ref_code_instance->get_ref_code();
