@@ -40,11 +40,28 @@ function wp_referral_code_user_param_shortcodes_init()
 				return ob_get_clean();
 			case 'referrer_username': // [nv-referral-code var="referrer_username"]
 				$referrer_id = get_user_meta($user_id, 'wrc_referrer_id', true);
+
+				// 1. If $referrer_id is empty, return "None"
+				if (empty($referrer_id)) {
+					return "None";
+				}
+
 				$nickname = get_user_meta($referrer_id, 'nickname', true);
 				$firstName = get_user_meta($referrer_id, 'first_name', true);
 				$lastName = get_user_meta($referrer_id, 'last_name', true);
 
-				return "{$firstName} {$lastName}({$nickname})";
+				// 2. Add $firstName and $lastName to an array
+				$nameParts = array_filter([$firstName, $lastName]);
+
+				// 3. Join the array elements with a space
+				$fullName = implode(' ', $nameParts);
+
+				// 4. If $fullName is empty, return only $nickname, else return $nickname with the full name
+				if (empty($fullName)) {
+					return "{$nickname}";
+				}
+
+				return "{$nickname}({$fullName})";
 			case 'invited_count': // [nv-referral-code var="invited_count"]
 				return empty($ref_code->get_invited_users_id()) ? '0' : count($ref_code->get_invited_users_id());
 			case 'most_referring_users': // [nv-referral-code var="most_referring_users"]

@@ -86,6 +86,16 @@
 
 			<tr>
 				<td class="wrc-shortcode">
+					[nv-referral-code var="referrer_username"]
+				</td>
+				<td>
+					<?php esc_html_e('Referrer Username', 'nv-referral-code'); ?><br>
+					<?php esc_html_e('Displays the referral user name of the new user’s referrer.', 'nv-referral-code'); ?>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="wrc-shortcode">
 					[nv-referral-code var="invited_count"]
 				</td>
 				<td>
@@ -111,6 +121,16 @@
 				<td>
 					<?php esc_html_e('Top Referring Users', 'nv-referral-code'); ?><br>
 					<?php esc_html_e('Displays a list of the top referring users. By default, the list displays the top 10 users, but you can use hooks to customize the number of users displayed', 'nv-referral-code'); ?>
+				</td>
+			</tr>
+
+			<tr>
+				<td class="wrc-shortcode">
+					[nv-referral-code var="manual-setting-referrer"]
+				</td>
+				<td>
+					<?php esc_html_e('Manual Setting Referrer', 'nv-referral-code'); ?><br>
+					<?php esc_html_e('A shortcode used to provide script and style logic support for manually setting a referrer.', 'nv-referral-code'); ?>
 				</td>
 			</tr>
 		</tbody>
