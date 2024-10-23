@@ -226,7 +226,7 @@ if (! function_exists('wp_referral_code_delete_relation_2')) {
 			$users_referred_by_referrer,
 			array((object)array('i' => $to_delete_user_id, 'j' => null)),
 			function ($a, $b) {
-				if ($a->i === $b->i) {
+				if ($a->i == $b->i) {
 					return 0;
 				}
 				return ($a->i < $b->i) ? -1 : 1;  // 按 'i' 进行排序比较
