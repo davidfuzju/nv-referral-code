@@ -126,6 +126,16 @@ function wp_referral_code_user_param_shortcodes_init()
 				wp_enqueue_style('manual-setting-referrer-styles', plugin_dir_url(__FILE__) . 'css/wp-referral-code-manual-setting-referrer.css', array(), WP_REFERRAL_CODE_VERSION);
 				wp_localize_script('jquery', 'ajaxurl', admin_url('admin-ajax.php'));
 				return;
+			case 'userid-query': // [nv-referral-code var="userid-query"]
+
+				wp_enqueue_script('userid-query', plugin_dir_url(__FILE__) . 'js/wp-referral-code-userid-query.js', array(), WP_REFERRAL_CODE_VERSION, true);
+				wp_enqueue_style('userid-query-styles', plugin_dir_url(__FILE__) . 'css/wp-referral-code-userid-query.css', array(), WP_REFERRAL_CODE_VERSION);
+				wp_localize_script('jquery', 'ajaxurl', admin_url('admin-ajax.php'));
+
+				ob_start();
+				require WP_REFERRAL_CODE_PATH . 'public/partials/userid-query.php';
+
+				return ob_get_clean();
 		}
 
 		// [nv-referral-code var="valid_invited_count"]

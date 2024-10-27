@@ -133,6 +133,16 @@
 					<?php esc_html_e('A shortcode used to provide script and style logic support for manually setting a referrer.', 'nv-referral-code'); ?>
 				</td>
 			</tr>
+
+			<tr>
+				<td class="wrc-shortcode">
+					[nv-referral-code var="userid-query"]
+				</td>
+				<td>
+					<?php esc_html_e('Userid Query', 'nv-referral-code'); ?><br>
+					<?php esc_html_e('A shortcode used to provide query user id by username', 'nv-referral-code'); ?>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
