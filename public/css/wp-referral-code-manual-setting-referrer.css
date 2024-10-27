@@ -1,5 +1,5 @@
 /* Overlay */
-#referral-popup-overlay {
+#wrc-referral-popup-overlay {
   display: none; /* Initially hidden */
   position: fixed;
   top: 0;
@@ -13,7 +13,7 @@
   flex-direction: column; /* Stack content vertically */
 }
 
-#referral-popup-content {
+#wrc-referral-popup-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,19 +26,19 @@
   background-color: #fff;
 }
 
-#warning-message {
+#wrc-warning-message {
   text-align: center;
   font-weight: bold;
   padding: 10px;
   border-radius: 5px;
 }
 
-#warning-message p {
+#wrc-warning-message p {
   margin-top: 0px;
   margin-bottom: 10px;
 }
 
-#referral-form label {
+#wrc-referral-form label {
   margin-bottom: 10px;
   font-weight: bold;
   text-align: center;
@@ -46,7 +46,7 @@
   font-size: 12px;
 }
 
-#referral-code {
+#wrc-referral-code {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;
@@ -57,14 +57,14 @@
   box-sizing: border-box;
 }
 
-#referral-buttons {
+#wrc-referral-buttons {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-#cancel-button,
-#commit-button {
+#wrc-cancel-button,
+#wrc-commit-button {
   width: 48%;
   padding: 10px;
   background-color: #f0f0f0;
@@ -74,15 +74,15 @@
   font-size: 16px;
 }
 
-#commit-button {
+#wrc-commit-button {
   background-color: #4caf50;
   color: white;
 }
 
-#cancel-button:hover {
+#wrc-cancel-button:hover {
   background-color: #e7e7e7;
 }
 
-#commit-button:hover {
+#wrc-commit-button:hover {
   background-color: #45a049;
 }
