@@ -22,11 +22,6 @@ function wp_referral_code_user_param_shortcodes_init()
 		$ref_code = new WP_Refer_Code($user_id);
 
 		switch ($para) {
-			case 'member_id': // [nv-referral-code var="member_id"]
-				ob_start();
-				require WP_REFERRAL_CODE_PATH . 'public/partials/member-id.php';
-
-				return ob_get_clean();
 			case 'ref_code': // [nv-referral-code var="ref_code"]
 				return $ref_code->get_ref_code();
 			case 'ref_link': // [nv-referral-code var="ref_link"]
@@ -126,16 +121,6 @@ function wp_referral_code_user_param_shortcodes_init()
 				wp_enqueue_style('manual-setting-referrer-styles', plugin_dir_url(__FILE__) . 'css/wp-referral-code-manual-setting-referrer.css', array(), WP_REFERRAL_CODE_VERSION);
 				wp_localize_script('jquery', 'ajaxurl', admin_url('admin-ajax.php'));
 				return;
-			case 'userid-query': // [nv-referral-code var="userid-query"]
-
-				wp_enqueue_script('userid-query', plugin_dir_url(__FILE__) . 'js/wp-referral-code-userid-query.js', array(), WP_REFERRAL_CODE_VERSION, true);
-				wp_enqueue_style('userid-query-styles', plugin_dir_url(__FILE__) . 'css/wp-referral-code-userid-query.css', array(), WP_REFERRAL_CODE_VERSION);
-				wp_localize_script('jquery', 'ajaxurl', admin_url('admin-ajax.php'));
-
-				ob_start();
-				require WP_REFERRAL_CODE_PATH . 'public/partials/userid-query.php';
-
-				return ob_get_clean();
 		}
 
 		// [nv-referral-code var="valid_invited_count"]
