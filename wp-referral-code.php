@@ -3,15 +3,11 @@
 /**
  * NuVous referral code
  *
- * @link              https://github.com/davidfuzju/nv-referral-code
- * @since             1.1.1
- * @package           WP_Referral_Code
- *
  * @wordpress-plugin
  * Plugin Name:       NV Referral Code
  * Plugin URI:        https://github.com/davidfuzju/nv-referral-code
  * Description:       This plugin brings referral marketing to your WordPress website. It's dead simple, fast, customizable, and it's all free!
- * Version:           1.5.0
+ * Version:           1.5.1
  * Author:            David FU <david.fu.zju@gmail.com>
  * Author URI:        https://github.com/davidfuzju
  * License:           GPL-2.0+
@@ -27,7 +23,7 @@ if (! defined('WPINC')) {
 // holds the plugin path.
 define('WP_REFERRAL_CODE_PATH', plugin_dir_path(__FILE__));
 define('WP_REFERRAL_CODE_URI', plugin_dir_url(__FILE__));
-define('WP_REFERRAL_CODE_VERSION', '1.4.10');
+define('WP_REFERRAL_CODE_VERSION', '1.5.1');
 
 /**
  * The code that runs during plugin activation.
