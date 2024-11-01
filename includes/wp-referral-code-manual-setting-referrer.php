@@ -34,6 +34,15 @@ function nv_process_referral_code_manual_setting_referrer()
 			wp_die();
 		}
 
+		// Check if the referral code belongs to the current user
+		if ($referring_user->user_id == get_current_user_id()) {
+			wp_send_json_error(array(
+				'message' => 'You cannot use your own referral code.',
+				'error_code' => 'SELF_REFERRAL_CODE'
+			));
+			wp_die();
+		}
+
 		// Get the current logged-in user
 		$current_user_id = get_current_user_id();
 
