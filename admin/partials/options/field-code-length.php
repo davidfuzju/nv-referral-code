@@ -17,6 +17,6 @@
 	<!-- WordPress admin danger icon -->
 	<i class="dashicons dashicons-warning" style="color:#ffebeb; margin-right: 5px"></i>
 
-	<?php esc_html_e('Changing this option will reset refer code of all users', 'wp-referral-code'); ?>
+	<?php esc_html_e('Changing this option will reset refer code of all users', 'nv-referral-code'); ?>
 </div>
 <!-- refer code length HTML -->

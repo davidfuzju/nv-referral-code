@@ -2,8 +2,8 @@
 	<table class="wrc-most-referring-table">
 		<thead class="wrc-most-referring-thead">
 			<tr>
-				<td><?php esc_html_e('User', 'wp-referral-code'); ?></td>
-				<td><?php esc_html_e('Count', 'wp-referral-code'); ?></td>
+				<td><?php esc_html_e('User', 'nv-referral-code'); ?></td>
+				<td><?php esc_html_e('Count', 'nv-referral-code'); ?></td>
 			</tr>
 		</thead>
 		<?php foreach ($results as $result) : ?>
@@ -18,6 +18,6 @@
 	</table>
 <?php else : ?>
 	<p class="wrc-empty-most-referring-message">
-		<?php echo esc_html(apply_filters('wp_referral_code_empty_most_referring_message', __('No Referrals yet! be the first one.', 'wp-referral-code'))); ?>
+		<?php echo esc_html(apply_filters('wp_referral_code_empty_most_referring_message', __('No Referrals yet! be the first one.', 'nv-referral-code'))); ?>
 	</p>
 <?php endif; ?>

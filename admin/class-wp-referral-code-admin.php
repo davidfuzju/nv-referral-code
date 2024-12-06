@@ -71,8 +71,8 @@ class WP_Referral_Code_Admin
 				'plugin_action_links',
 				function ($links, $file) {
 					if (plugin_basename('wp-referral-code/wp-referral-code.php') === $file) {
-						$links[] = '<a href="' . admin_url('options-general.php?page=wp-referral-code') . '">' . __('Settings', 'wp-referral-code') . '</a>';
-						$links[] = '<a href="https://shalior.ir/wp-referral-code">' . __('Documentation & Support', 'wp-referral-code') . '</a>';
+						$links[] = '<a href="' . admin_url('options-general.php?page=wp-referral-code') . '">' . __('Settings', 'nv-referral-code') . '</a>';
+						$links[] = '<a href="https://shalior.ir/wp-referral-code">' . __('Documentation & Support', 'nv-referral-code') . '</a>';
 					}
 
 					return $links;
