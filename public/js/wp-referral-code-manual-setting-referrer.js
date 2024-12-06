@@ -4,8 +4,8 @@ jQuery(document).ready(function ($) {
 		<div id="wrc-referral-popup-content">
     			<form id="wrc-referral-form">
         			<div id="wrc-warning-message">
-           				<p>${translations.manual_setting_referrer_warning_title}<br>
-            				${translations.manual_setting_referrer_warning_description}</p>
+           				<p>${translation.manual_setting_referrer_warning_title}<br>
+            				${translation.manual_setting_referrer_warning_description}</p>
         			</div>
 
         			<label id="wrc-referral-code-label" for="wrc-referral-code"></label>

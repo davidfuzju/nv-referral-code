@@ -120,7 +120,7 @@ function wp_referral_code_user_param_shortcodes_init()
 				wp_enqueue_script('manual-setting-referrer', plugin_dir_url(__FILE__) . 'js/wp-referral-code-manual-setting-referrer.js', array(), WP_REFERRAL_CODE_VERSION, true);
 				wp_enqueue_style('manual-setting-referrer-styles', plugin_dir_url(__FILE__) . 'css/wp-referral-code-manual-setting-referrer.css', array(), WP_REFERRAL_CODE_VERSION);
 				wp_localize_script('manual-setting-referrer', 'ajaxurl', admin_url('admin-ajax.php'));
-				wp_localize_script('manual-setting-referrer', 'translations', array(
+				wp_localize_script('manual-setting-referrer', 'translation', array(
 					'manual_setting_referrer_warning_title' => __('WARNING', 'nv-referral-code'),
 					'manual_setting_referrer_warning_description' => __('Please be advised that once you commit, it cannot be changed.', 'nv-referral-code'),
 					'manual_setting_referrer_commit_button_title' => __('Commit', 'nv-referral-code'),
