@@ -9,7 +9,7 @@ function nv_process_referral_code_manual_setting_referrer()
 	// Ensure the referral code is provided
 	if (!isset($_POST['referral_code']) || empty($_POST['referral_code'])) {
 		wp_send_json_error(array(
-			'message' => 'Referral code is required.',
+			'message' => __('Referral code is required.', 'nv-referral-code'),
 			'error_code' => 'REFERRAL_CODE_MISSING'
 		));
 		wp_die();
@@ -28,7 +28,7 @@ function nv_process_referral_code_manual_setting_referrer()
 		// Handle if the referral code is not found
 		if (!$referring_user) {
 			wp_send_json_error(array(
-				'message' => 'Invalid referral code. Please try again.',
+				'message' => __('Invalid referral code. Please try again.', 'nv-referral-code'),
 				'error_code' => 'REFERRAL_NOT_FOUND'
 			));
 			wp_die();
@@ -37,7 +37,7 @@ function nv_process_referral_code_manual_setting_referrer()
 		// Check if the referral code belongs to the current user
 		if ($referring_user->user_id == get_current_user_id()) {
 			wp_send_json_error(array(
-				'message' => 'You cannot use your own referral code.',
+				'message' => __('You cannot use your own referral code.', 'nv-referral-code'),
 				'error_code' => 'SELF_REFERRAL_CODE'
 			));
 			wp_die();
@@ -49,7 +49,7 @@ function nv_process_referral_code_manual_setting_referrer()
 		// Check if the current user is logged in
 		if (!$current_user_id) {
 			wp_send_json_error(array(
-				'message' => 'You must be logged in to apply a referral code.',
+				'message' => __('You must be logged in to apply a referral code.', 'nv-referral-code'),
 				'error_code' => 'USER_NOT_LOGGED_IN'
 			));
 			wp_die();
@@ -59,7 +59,7 @@ function nv_process_referral_code_manual_setting_referrer()
 		$existing_referrer = get_user_meta($current_user_id, 'wrc_referrer_id', true);
 		if ($existing_referrer) {
 			wp_send_json_error(array(
-				'message' => 'You have already been referred by another user.',
+				'message' => __('You have already been referred.', 'nv-referral-code'),
 				'error_code' => 'ALREADY_REFERRED'
 			));
 			wp_die();
@@ -80,14 +80,14 @@ function nv_process_referral_code_manual_setting_referrer()
 
 		// Return success with additional data
 		wp_send_json_success(array(
-			'message' => 'Referral code successfully applied!',
+			'message' => __('Referral code successfully applied!\nReferred by:', 'nv-referral-code'),
 			'referrer_name' => $referrer_name,
 			'referral_code' => $referral_code,
 			'thank_you_message' => 'Thank you for using the referral system!'
 		));
 	} catch (Exception $e) {
 		wp_send_json_error(array(
-			'message' => 'An error occurred while processing the referral code.',
+			'message' => __('An error occurred while processing the referral code.', 'nv-referral-code'),
 			'error_code' => 'INTERNAL_ERROR',
 			'error_details' => $e->getMessage()
 		));

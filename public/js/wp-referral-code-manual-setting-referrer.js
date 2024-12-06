@@ -4,16 +4,16 @@ jQuery(document).ready(function ($) {
 		<div id="wrc-referral-popup-content">
     			<form id="wrc-referral-form">
         			<div id="wrc-warning-message">
-           				<p>WARNING<br>
-            				Please be advised that once you commit, it cannot be changed.</p>
+           				<p>${translations.manual_setting_referrer_warning_title}<br>
+            				${translations.manual_setting_referrer_warning_description}</p>
         			</div>
 
         			<label id="wrc-referral-code-label" for="wrc-referral-code"></label>
-        			<input type="text" id="wrc-referral-code" name="wrc-referral-code" placeholder="Referrer Membership No." value="">
+        			<input type="text" id="wrc-referral-code" name="wrc-referral-code" placeholder="${translation.manual_setting_referrer_input_placeholder}" value="">
 
         			<div id="wrc-referral-buttons">
-            				<button type="button" id="wrc-cancel-button">Cancel</button>
-            				<button type="submit" id="wrc-commit-button">Commit</button>
+            				<button type="button" id="wrc-cancel-button">${translation.manual_setting_referrer_cancel_button_title}</button>
+            				<button type="submit" id="wrc-commit-button">${translation.manual_setting_referrer_commit_button_title}</button>
         			</div>
     			</form>
 		</div>
@@ -45,14 +45,10 @@ jQuery(document).ready(function ($) {
     $.post(ajaxurl, data, function (response) {
       if (response == 0) {
         $("#wrc-referral-code-label").text(
-          "An error occurred: Invalid action specified."
+          translations.manual_setting_referrer_error
         );
       } else if (response.success) {
-        alert(
-          response.data.message +
-            "\nReferred by: " +
-            response.data.referrer_name
-        );
+        alert(response.data.message + response.data.referrer_name);
 
         $("#wrc-referral-popup-overlay").css("display", "none");
         $("body").css("overflow", "auto");
@@ -66,33 +62,20 @@ jQuery(document).ready(function ($) {
       } else {
         switch (response.data.error_code) {
           case "REFERRAL_CODE_MISSING":
-            $("#wrc-referral-code-label").text("Please enter a referral code.");
             break;
           case "REFERRAL_NOT_FOUND":
-            $("#wrc-referral-code-label").text(
-              "Invalid referral code. Please try again."
-            );
             break;
           case "USER_NOT_LOGGED_IN":
-            $("#wrc-referral-code-label").text(
-              "You must be logged in to apply a referral code."
-            );
             break;
           case "ALREADY_REFERRED":
-            $("#wrc-referral-code-label").text(
-              "You have already been referred."
-            );
             break;
           default:
-            $("#wrc-referral-code-label").text(
-              "An error occurred: " + response.data.message
-            );
+            break;
         }
+        $("#wrc-referral-code-label").text(response.data.message);
       }
     }).fail(function () {
-      $("#wrc-referral-code-label").text(
-        "An error occurred: " + response.data.message
-      );
+      $("#wrc-referral-code-label").text(response.data.message);
     });
   });
 
