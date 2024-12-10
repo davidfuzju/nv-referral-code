@@ -1,6 +1,6 @@
 <?php
 // Register the AJAX actions for both logged-in and non-logged-in users
-add_action('wp_ajax_manual_setting_referer', 'nv_process_referral_code_manual_setting_referrer');
+add_action('wp_ajax_manual_setting_referrer', 'nv_process_referral_code_manual_setting_referrer');
 
 function nv_process_referral_code_manual_setting_referrer()
 {

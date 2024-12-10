@@ -20,14 +20,8 @@ jQuery(document).ready(function ($) {
 	</div>
 `);
 
-  // Set the click event for the close button to remove the overlay and preview image
-  $("#nv-referral-code-manual-setting-referrer-button").on(
-    "click",
-    function () {
-      $("#wrc-referral-popup-overlay").css("display", "flex"); // Show the overlay
-      $("body").css("overflow", "hidden"); // Disable scrolling on the body
-    }
-  );
+  $("#wrc-referral-popup-overlay").css("display", "flex"); // Show the overlay
+  $("body").css("overflow", "hidden"); // Disable scrolling on the body
 
   // Handle the form submission
   $("#wrc-referral-form").submit(function (e) {
