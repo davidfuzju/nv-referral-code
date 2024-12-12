@@ -80,7 +80,7 @@ function nv_process_referral_code_manual_setting_referrer()
 
 		// Return success with additional data
 		wp_send_json_success(array(
-			'message' => __('Referral code successfully applied!\nReferred by:', 'nv-referral-code'),
+			'message' => __('Referral code successfully applied! Referred by:', 'nv-referral-code'),
 			'referrer_name' => $referrer_name,
 			'referral_code' => $referral_code,
 			'thank_you_message' => 'Thank you for using the referral system!'
