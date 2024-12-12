@@ -39,9 +39,9 @@ function nv_referral_code_validation()
 	}
 
 	// Retrieve the user's referral code
-	$user_ref_code = get_user_meta($user_id, 'wrc_ref_code', true);
+	$user_referrer_code = get_user_meta($user_id, 'wrc_referrer_code', true);
 
-	if (empty($user_ref_code)) {
+	if (empty($user_referrer_code)) {
 		// If the referral code is missing (logic can be expanded)
 		update_user_meta($user_id, 'needs_wc_ref_check', true);
 
