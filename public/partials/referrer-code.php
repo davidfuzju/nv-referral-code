@@ -10,5 +10,5 @@
 <?php if (!empty($referrer_code)) : ?>
 <?php echo esc_html($referrer_code); ?>
 <?php else : ?>
-<?php echo esc_html("None"); ?>
+<?php echo esc_html_e('None', 'nv-referral-code'); ?>
 <?php endif; ?>

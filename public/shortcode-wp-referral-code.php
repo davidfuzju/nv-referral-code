@@ -38,7 +38,7 @@ function wp_referral_code_user_param_shortcodes_init()
 
 				// 1. If $referrer_id is empty, return "None"
 				if (empty($referrer_id)) {
-					return "None";
+					return __('None', 'nv-referral-code');
 				}
 
 				$nickname = get_user_meta($referrer_id, 'nickname', true);
