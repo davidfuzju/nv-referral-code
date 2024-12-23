@@ -79,7 +79,7 @@ final class WP_Referral_Code_Settings
 			'sanitize_callback' => array($this, 'sanitize_callback'),
 			'show_in_rest'      => false,
 		);
-		register_setting($this->page_slug, 'nv_referral_code_options', $args);
+		register_setting($this->page_slug, 'wp_referral_code_options', $args);
 		// register a new section.
 		add_settings_section(
 			'wp_referral_code_section_1',
@@ -127,6 +127,16 @@ final class WP_Referral_Code_Settings
 		if ($this->options == $data) {
 			return $data;
 		}
+
+		$expected_keys = array('register_url', 'expiration_time');
+		$data_keys     = array_keys($data);
+
+		// Check if $data_keys is a subset of $expected_keys.
+		if (array_diff($data_keys, $expected_keys)) {
+			add_settings_error($this->page_slug, $this->page_slug, __('Unknown setting!', 'nv-referral-code'));
+			return $this->options;
+		}
+
 		// validate register_url.
 		if (wrc_is_valid_url($data['register_url']) === false) {
 			add_settings_error($this->page_slug, $this->page_slug, __('Register Url is not valid', 'nv-referral-code'));
