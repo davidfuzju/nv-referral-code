@@ -1,5 +1,7 @@
 jQuery(document).ready(function ($) {
-  $("body").append(`
+  if (meta_data.is_required) {
+    // cancel and commit for role others
+    $("body").append(`
 	<div id="wrc-referral-popup-overlay">
 		<div id="wrc-referral-popup-content">
     			<form id="wrc-referral-form">
@@ -19,6 +21,29 @@ jQuery(document).ready(function ($) {
 		</div>
 	</div>
 `);
+  } else {
+    // skip and commit for role mp and customer
+    $("body").append(`
+	<div id="wrc-referral-popup-overlay">
+		<div id="wrc-referral-popup-content">
+    			<form id="wrc-referral-form">
+        			<div id="wrc-warning-message">
+           				<p>${translation.warning_title}<br>
+            				${translation.warning_description}</p>
+        			</div>
+
+        			<label id="wrc-referral-code-label" for="wrc-referral-code"></label>
+        			<input type="text" id="wrc-referral-code" name="wrc-referral-code" placeholder="${translation.input_placeholder}" value="">
+
+        			<div id="wrc-referral-buttons">
+            				<button type="button" id="wrc-skip-button">${translation.skip_button_title}</button>
+            				<button type="submit" id="wrc-commit-button">${translation.commit_button_title}</button>
+        			</div>
+    			</form>
+		</div>
+	</div>
+`);
+  }
 
   $("#wrc-referral-popup-overlay").css("display", "flex"); // Show the overlay
   $("body").css("overflow", "hidden"); // Disable scrolling on the body
@@ -71,33 +96,34 @@ jQuery(document).ready(function ($) {
     });
   });
 
-  // Handle the Cancel button click - Close the popup
+  // Handle the Cancel button click - Logout and Close the popup
   $("#wrc-cancel-button").click(function (e) {
     e.preventDefault();
 
-    if (meta_data.is_required) {
-      // If referral code is required, log out the user
-      var data = {
-        action: "logout",
-      };
+    // If referral code is required, log out the user
+    var data = {
+      action: "logout",
+    };
 
-      $.post(ajaxurl, data, function (response) {
-        if (response == 0) {
-          $("#wrc-referral-code-label").text(translation.error);
-        } else if (response.success) {
-          window.location.reload();
-        } else {
-          $("#wrc-referral-code-label").text(response.data.message);
-        }
-      }).fail(function () {
+    $.post(ajaxurl, data, function (response) {
+      if (response == 0) {
         $("#wrc-referral-code-label").text(translation.error);
-      });
-    } else {
-      // If referral code is optional, just close the popup
+      } else if (response.success) {
+        window.location.reload();
+      } else {
+        $("#wrc-referral-code-label").text(response.data.message);
+      }
+    }).fail(function () {
+      $("#wrc-referral-code-label").text(translation.error);
+    });
+  });
 
-      $("#wrc-referral-popup-overlay").css("display", "none");
-      $("body").css("overflow", "auto");
-      $("#wrc-referral-code-label").text("");
-    }
+  // Handle the Skip button click - Close the popup
+  $("#wrc-skip-button").click(function (e) {
+    e.preventDefault();
+
+    $("#wrc-referral-popup-overlay").css("display", "none");
+    $("body").css("overflow", "auto");
+    $("#wrc-referral-code-label").text("");
   });
 });

@@ -64,6 +64,7 @@
 }
 
 #wrc-cancel-button,
+#wrc-skip-button,
 #wrc-commit-button {
   width: 48%;
   padding: 10px;
@@ -79,7 +80,8 @@
   color: white;
 }
 
-#wrc-cancel-button:hover {
+#wrc-cancel-button:hover,
+#wrc-skip-button:hover {
   background-color: #e7e7e7;
 }
 
