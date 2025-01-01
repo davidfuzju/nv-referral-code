@@ -32,18 +32,22 @@ function nv_referral_code_validation()
 		return;
 	}
 
-	// If 'needs_wc_ref_check' already exists, clear 'login_token' and stop
-	if (get_user_meta($user_id, 'needs_wc_ref_check', true)) {
-		delete_user_meta($user_id, 'login_token');
-		return;
-	}
-
 	// Retrieve the user's referral code
 	$user_referrer_code = get_user_meta($user_id, 'wrc_referrer_code', true);
 
 	if (empty($user_referrer_code)) {
 		// If the referral code is missing (logic can be expanded)
-		update_user_meta($user_id, 'needs_wc_ref_check', true);
+
+		$user = wp_get_current_user();
+		$is_required = false;
+
+		if ($user && $user->exists()) {
+			$roles = (array) $user->roles;
+
+			if ((count($roles) === 1 && $roles[0] === 'mp') || (count($roles) === 1 && $roles[0] === 'customer')) {
+				$is_required = true;
+			}
+		}
 
 		// Enqueue the JavaScript file for referral code validation
 		wp_enqueue_script(
@@ -72,8 +76,22 @@ function nv_referral_code_validation()
 			'input_placeholder' => __('Referrer Membership No.', 'nv-referral-code'),
 			'error' => __('An error occurred: Invalid action specified.', 'nv-referral-code'),
 		));
+		wp_localize_script('referral-code-validation', 'meta_data', array(
+			'is_required' => $is_required,
+		));
 	}
 
 	// Clear the 'login_token' after processing
 	delete_user_meta($user_id, 'login_token');
+}
+
+add_action('wp_ajax_logout', 'nv_referral_code_validation_logout');
+add_action('wp_ajax_nopriv_logout', 'nv_referral_code_validation_logout');
+
+function nv_referral_code_validation_logout()
+{
+	wp_logout();
+	wp_send_json_success(array(
+		'message' => 'User logged out successfully.'
+	));
 }

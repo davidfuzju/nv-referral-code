@@ -67,14 +67,37 @@ jQuery(document).ready(function ($) {
         $("#wrc-referral-code-label").text(response.data.message);
       }
     }).fail(function () {
-      $("#wrc-referral-code-label").text(response.data.message);
+      $("#wrc-referral-code-label").text(translation.error);
     });
   });
 
   // Handle the Cancel button click - Close the popup
-  $("#wrc-cancel-button").click(function () {
-    $("#wrc-referral-popup-overlay").css("display", "none");
-    $("body").css("overflow", "auto");
-    $("#wrc-referral-code-label").text("");
+  $("#wrc-cancel-button").click(function (e) {
+    e.preventDefault();
+
+    if (meta_data.is_required) {
+      // If referral code is required, log out the user
+      var data = {
+        action: "logout",
+      };
+
+      $.post(ajaxurl, data, function (response) {
+        if (response == 0) {
+          $("#wrc-referral-code-label").text(translation.error);
+        } else if (response.success) {
+          window.location.reload();
+        } else {
+          $("#wrc-referral-code-label").text(response.data.message);
+        }
+      }).fail(function () {
+        $("#wrc-referral-code-label").text(translation.error);
+      });
+    } else {
+      // If referral code is optional, just close the popup
+
+      $("#wrc-referral-popup-overlay").css("display", "none");
+      $("body").css("overflow", "auto");
+      $("#wrc-referral-code-label").text("");
+    }
   });
 });
