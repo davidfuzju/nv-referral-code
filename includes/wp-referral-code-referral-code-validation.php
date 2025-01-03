@@ -54,7 +54,7 @@ function nv_referral_code_validation()
 			wp_localize_script('referral-code-validation', 'ajaxurl', admin_url('admin-ajax.php'));
 			wp_localize_script('referral-code-validation', 'translation', array(
 				'warning_title' => __('Welcome to NuVous!', 'nv-referral-code'),
-				'warning_description' => __("If you have a referral code, please enter it in the field below and press enter. If you don't have one, feel free to skip this step", 'nv-referral-code'),
+				'warning_description' => __("Please enter the referral number in the box below and click “Submit”. Otherwise, click “Cancel” to discontinue the login process", 'nv-referral-code'),
 				'commit_button_title' => __('Enter', 'nv-referral-code'),
 				'skip_button_title' => __('Skip', 'nv-referral-code'),
 				'cancel_button_title' => __('Cancel', 'nv-referral-code'),
