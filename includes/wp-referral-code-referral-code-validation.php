@@ -1,19 +1,6 @@
 <?php
 
 /**
- * Set a login token when a user successfully logs in.
- *
- * @param string $user_login The username of the user logging in.
- * @param WP_User $user The WP_User object of the logged-in user.
- */
-add_action('wp_login', 'set_login_token', 10, 2);
-function set_login_token($user_login, $user)
-{
-	// Add a 'login_token' user meta to track user login state
-	update_user_meta($user->ID, 'login_token', true);
-}
-
-/**
  * Validate and handle referral code logic.
  * Enqueues scripts and styles for displaying a referral code prompt.
  */
@@ -26,11 +13,6 @@ function nv_referral_code_validation()
 	}
 
 	$user_id = get_current_user_id();
-
-	// Check if the user has a 'login_token'
-	if (!get_user_meta($user_id, 'login_token', true)) {
-		return;
-	}
 
 	// Retrieve the user's referral code
 	$user_referrer_code = get_user_meta($user_id, 'wrc_referrer_code', true);
@@ -84,9 +66,6 @@ function nv_referral_code_validation()
 			));
 		}
 	}
-
-	// Clear the 'login_token' after processing
-	delete_user_meta($user_id, 'login_token');
 }
 
 add_action('wp_ajax_logout', 'nv_referral_code_validation_logout');
