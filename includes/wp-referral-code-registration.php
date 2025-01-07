@@ -16,6 +16,33 @@ function wp_referral_code_handle_new_registration($user_id)
 		$ref_url = sanitize_text_field($_COOKIE['refer_url']);
 	}
 
+	nv_referral_code_handle_new_registration(
+		$user_id,
+		$ref_code,
+		$ref_url,
+		function ($user_id, $ref_code, $ref_url) {
+			if (isset($_COOKIE['refer_code'])) {
+				wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS);
+				unset($_COOKIE['refer_code']);
+			}
+		}
+	);
+
+	// remove cookie.
+	if (isset($_COOKIE['refer_code'])) {
+		wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS);
+		unset($_COOKIE['refer_code']);
+	}
+
+	if (isset($_COOKIE['refer_url'])) {
+		wrc_set_cookie('refer_url', 0, time() - HOUR_IN_SECONDS);
+		unset($_COOKIE['refer_url']);
+	}
+}
+
+
+function nv_referral_code_handle_new_registration($user_id, $ref_code, $ref_url = '', callable $on_invalid_ref = null)
+{
 	$ref_code = apply_filters('wp_referral_code_new_user_ref_code', $ref_code, $ref_url, $user_id);
 
 	$referee_user_id = $user_id;
@@ -32,9 +59,8 @@ function wp_referral_code_handle_new_registration($user_id)
 
 	// if quite if the ref_code is invalid.
 	if (false === $referrer_user_id) {
-		if (isset($_COOKIE['refer_code'])) {
-			wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS);
-			unset($_COOKIE['refer_code']);
+		if (is_callable($on_invalid_ref)) {
+			$on_invalid_ref($user_id, $ref_code, $ref_url);
 		}
 
 		return;
@@ -75,15 +101,4 @@ function wp_referral_code_handle_new_registration($user_id)
 	 * $ref_url: referral url of referrer
 	 */
 	do_action('wp_referral_code_after_refer_submitted', $referee_user_id, $referrer_user_id, $ref_code, $new_user_ref_code, $ref_url);
-
-	// remove cookie.
-	if (isset($_COOKIE['refer_code'])) {
-		wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS);
-		unset($_COOKIE['refer_code']);
-	}
-
-	if (isset($_COOKIE['refer_url'])) {
-		wrc_set_cookie('refer_url', 0, time() - HOUR_IN_SECONDS);
-		unset($_COOKIE['refer_url']);
-	}
 }
