@@ -180,12 +180,29 @@ class WP_Referral_Code
 		// set refer_code in Cookies
 		$name       = 'refer_code';
 		$refer_code = sanitize_text_field(wp_unslash($_GET[wrc_get_ref_code_query()]));
-		wrc_set_cookie($name, $refer_code, time() + $expires);
+		wrc_set_cookie($name, $refer_code, time() + $expires, '/', '', false, false);
 
 		// set refer_url in Cookies
 		$name2      = 'refer_url';
 		$refer_url  = wrc_get_current_url();
-		wrc_set_cookie($name2, $refer_url, time() + $expires);
+		wrc_set_cookie($name2, $refer_url, time() + $expires, '/', '', false, false);
 		// phpcs:enable
+	}
+
+	public function setReferralCookies($refer_code, $refer_url)
+	{
+		if (!empty($refer_code)) {
+			return;
+		}
+
+		$expires    = isset($this->options['expiration_time']) ? ($this->options['expiration_time'] * HOUR_IN_SECONDS) : (10 * HOUR_IN_SECONDS);
+
+		// set refer_code in Cookies
+		$name       = 'refer_code';
+		wrc_set_cookie($name, $refer_code, time() + $expires, '/', '', false, false);
+
+		// set refer_url in Cookies
+		$name2      = 'refer_url';
+		wrc_set_cookie($name2, $refer_url, time() + $expires, '/', '', false, false);
 	}
 }
