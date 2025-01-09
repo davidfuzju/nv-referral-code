@@ -22,7 +22,7 @@ function wp_referral_code_handle_new_registration($user_id)
 		$ref_url,
 		function ($user_id, $ref_code, $ref_url) {
 			if (isset($_COOKIE['refer_code'])) {
-				wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS, '/', '', false, false);
+				wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS);
 				unset($_COOKIE['refer_code']);
 			}
 		}
@@ -30,12 +30,12 @@ function wp_referral_code_handle_new_registration($user_id)
 
 	// remove cookie.
 	if (isset($_COOKIE['refer_code'])) {
-		wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS, '/', '', false, false);
+		wrc_set_cookie('refer_code', 0, time() - HOUR_IN_SECONDS);
 		unset($_COOKIE['refer_code']);
 	}
 
 	if (isset($_COOKIE['refer_url'])) {
-		wrc_set_cookie('refer_url', 0, time() - HOUR_IN_SECONDS, '/', '', false, false);
+		wrc_set_cookie('refer_url', 0, time() - HOUR_IN_SECONDS);
 		unset($_COOKIE['refer_url']);
 	}
 }

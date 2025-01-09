@@ -249,7 +249,7 @@ if (! function_exists('wrc_set_cookie')) {
 	function wrc_set_cookie($name, $value, $expire = 0)
 	{
 		if (! headers_sent()) {
-			setcookie($name, $value, $expire, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true);
+			setcookie($name, $value, $expire, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), false);
 		} elseif (true === WP_DEBUG) {
 			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			trigger_error("{$name} cookie cannot be set headers already sent.", E_USER_NOTICE);
