@@ -197,12 +197,17 @@ class WP_Referral_Code
 
 		$expires    = isset($this->options['expiration_time']) ? ($this->options['expiration_time'] * HOUR_IN_SECONDS) : (10 * HOUR_IN_SECONDS);
 
-		// set refer_code in Cookies
-		$name       = 'refer_code';
-		wrc_set_cookie($name, $refer_code, time() + $expires);
+		if (!isset($_COOKIE['refer_code'])) {
+			// set refer_code in Cookies
+			$name       = 'refer_code';
+			wrc_set_cookie($name, $refer_code, time() + $expires);
+		}
 
-		// set refer_url in Cookies
-		$name2      = 'refer_url';
-		wrc_set_cookie($name2, $refer_url, time() + $expires);
+
+		if (!isset($_COOKIE['refer_url'])) {
+			// set refer_url in Cookies
+			$name2      = 'refer_url';
+			wrc_set_cookie($name2, $refer_url, time() + $expires);
+		}
 	}
 }
