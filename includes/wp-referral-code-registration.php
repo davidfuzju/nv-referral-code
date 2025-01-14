@@ -14,6 +14,13 @@ function wp_referral_code_handle_new_registration($user_id)
 	if (isset($_COOKIE['refer_code'])) {
 		$ref_code = sanitize_text_field(wp_unslash($_COOKIE['refer_code']));
 		$ref_url = sanitize_text_field($_COOKIE['refer_url']);
+	} else {
+		if (!empty(WP_Referral_Code::get_instance()->temp_refer_code)) {
+			$ref_code = WP_Referral_Code::get_instance()->temp_refer_code;
+			$ref_url = WP_Referral_Code::get_instance()->temp_refer_url;
+			WP_Referral_Code::get_instance()->temp_refer_code = '';
+			WP_Referral_Code::get_instance()->temp_refer_url = '';
+		}
 	}
 
 	nv_referral_code_handle_new_registration(

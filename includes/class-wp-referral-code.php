@@ -47,6 +47,24 @@ class WP_Referral_Code
 	public $options;
 
 	/**
+	 * The Options of NV Referral Code
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      string
+	 */
+	public $temp_refer_code;
+
+	/**
+	 * The Options of NV Referral Code
+	 *
+	 * @since    1.0.0
+	 * @access   public
+	 * @var      string
+	 */
+	public $temp_refer_url;
+
+	/**
 	 * Define the core functionality of the plugin.
 	 *
 	 * Set the plugin name and the plugin version that can be used throughout the plugin.
@@ -191,11 +209,11 @@ class WP_Referral_Code
 
 	public function setReferralCookies($refer_code, $refer_url)
 	{
-		if (!empty($refer_code)) {
+		if (empty($refer_code)) {
 			return;
 		}
 
-		$expires    = isset($this->options['expiration_time']) ? ($this->options['expiration_time'] * HOUR_IN_SECONDS) : (10 * HOUR_IN_SECONDS);
+		$expires = isset($this->options['expiration_time']) ? ($this->options['expiration_time'] * HOUR_IN_SECONDS) : (10 * HOUR_IN_SECONDS);
 
 		if (!isset($_COOKIE['refer_code'])) {
 			// set refer_code in Cookies
@@ -203,11 +221,13 @@ class WP_Referral_Code
 			wrc_set_cookie($name, $refer_code, time() + $expires);
 		}
 
-
 		if (!isset($_COOKIE['refer_url'])) {
 			// set refer_url in Cookies
 			$name2      = 'refer_url';
 			wrc_set_cookie($name2, $refer_url, time() + $expires);
 		}
+
+		$this->temp_refer_code = $refer_code;
+		$this->temp_refer_url = $refer_url;
 	}
 }
