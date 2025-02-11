@@ -1,4 +1,6 @@
 jQuery(document).ready(function ($) {
+  var refer_code_value = getCookieOrEmpty("refer_code");
+
   if (meta_data.is_required) {
     // cancel and commit for role others
     $("body").append(`
@@ -11,7 +13,7 @@ jQuery(document).ready(function ($) {
         			</div>
 
         			<label id="wrc-referral-code-label" for="wrc-referral-code"></label>
-        			<input type="text" id="wrc-referral-code" name="wrc-referral-code" placeholder="${translation.input_placeholder}" value="">
+        			<input type="text" id="wrc-referral-code" name="wrc-referral-code" placeholder="${translation.input_placeholder}" value="${refer_code_value}">
 
         			<div id="wrc-referral-buttons">
             				<button type="button" id="wrc-cancel-button">${translation.cancel_button_title}</button>
@@ -33,7 +35,7 @@ jQuery(document).ready(function ($) {
         			</div>
 
         			<label id="wrc-referral-code-label" for="wrc-referral-code"></label>
-        			<input type="text" id="wrc-referral-code" name="wrc-referral-code" placeholder="${translation.input_placeholder}" value="">
+        			<input type="text" id="wrc-referral-code" name="wrc-referral-code" placeholder="${translation.input_placeholder}" value="${refer_code_value}">
 
         			<div id="wrc-referral-buttons">
             				<button type="button" id="wrc-skip-button">${translation.skip_button_title}</button>
@@ -126,4 +128,22 @@ jQuery(document).ready(function ($) {
     $("body").css("overflow", "auto");
     $("#wrc-referral-code-label").text("");
   });
+
+  /**
+   * 获取 cookie key 名称对应的
+   * @param {*} name
+   * @returns
+   */
+  function getCookieOrEmpty(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i].trim();
+      if (c.indexOf(nameEQ) === 0) {
+        let cookieValue = decodeURIComponent(c.substring(nameEQ.length, c.length));
+        return cookieValue || "";
+      }
+    }
+    return "";
+  }
 });
